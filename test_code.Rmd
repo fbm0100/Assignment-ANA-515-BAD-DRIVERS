@@ -1,0 +1,102 @@
+---
+title: "YAML"
+author: Fumilayo Moustapha ANA 515 Assignment  2
+date:  2022
+output: word_document
+---
+
+```{r, include=FALSE}
+library(markdown)
+library(readr)
+library(bslib)
+library(tidyverse)
+library(knitr)
+library(dplyr)
+library(rmarkdown)
+library(ggplot2)
+library(janitor)
+library(dplyr)
+```
+
+```{r ,include=FALSE}
+
+url <- "https://github.com/fivethirtyeight/data/blob/master/bad-drivers/bad-drivers.csv"
+data_538<- read.csv(url)
+View(data_538)
+```
+
+answer:1 
+the content of the data set is with respect to states.
+content are  the columns 
+1) Number of drivers involved in fatal collisions per billion miles
+2) Percentage of drivers involved in fatal collisions who were spending
+3) percentage of drivers involved in fatal collisions who were alcohol-impaired
+4) percentage of drivers involved in fatal collisions who were not distracted
+5) percentage of drivers involved in fatal collisions who had not been involved in any previous accidents
+6) Car Insurance premiums
+7) losses incurred by insurance companies for collisions per insured driver
+
+
+all the variables are giving us a discrete numerical values which mean the quantitative variables it was collected from the traffic police
+the data was saved in comma separated values(csv) format
+delimited the comma was used for delimiters and  we normally used to excel to open a csv file.
+the data is not in binary format its a quantitative dataset.
+
+
+
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r,include=FALSE}
+library(readr)
+bad_drivers <- read_csv("C:/Users/GNG/Downloads/bad-drivers.csv")
+View(bad_drivers)
+library(dplyr)
+```
+
+#comment 
+answer 2 
+we use library "readr" for importing a dataset in r studio the file is in csv format so i used the come read_csv (bad_drivers)
+```{r,include=FALSE}
+cleandata<-clean_names(bad_drivers)
+colnames(cleandata)
+View(cleandata)
+
+```
+
+```{r,include=FALSE}
+bad_drivers2<-cleandata%>% filter(number_of_drivers_involved_in_fatal_collisions_per_billion_miles > 15 , percentage_of_drivers_involved_in_fatal_collisions_who_were_speeding > 30 , percentage_of_drivers_involved_in_fatal_collisions_who_were_alcohol_impaired >30 , percentage_of_drivers_involved_in_fatal_collisions_who_had_not_been_involved_in_any_previous_accidents>40)
+```
+
+```{r,echo=FALSE}
+
+```
+
+This data frame has `r nrow(bad_drivers2)`rows and `r ncol(bad_drivers2)` columns. The names of the columns and a brief description of each are in the table below:
+```{r,echo=FALSE}
+kable(bad_drivers2)
+```
+description:The state of Hawai has 17.5 number of drivers involved in fatal collisions per billion miles, 54% of drivers involved in fatal collisions who were speeding, 41% of drivers involved in fatal collisions who were alcohol impaired,82% of drivers involved in fatal collisions who were not distracted , 87% drivers involved in fatal collisions who had not been involved in any previous accidents, there are 86, 1.1 and 8 in terms of car insurance premiums and losses incurred by insurance companies for collisions per insured driver.
+The state of Lousiana has 20.5 number of drivers involved in fatal collisions per billion miles, 35% of drivers involved in fatal collisions who were speeding, 33% of drivers involved in fatal collisions who were alcohol impaired , 73% of drivers involved in fatal collisions who were not distracted, 98% of drivers involved in fatal collisions who had been involved in any previous accidents, there are 12, 81, 55 were car insurance premiums and 194.78 losses incurred by insurance companies for collisions per insured driver. 
+The state of Missouri has 16.1 number of drivers involved in Fatal Collisions per billion miles, 43% of drivers involved in fatal collisions who were speeding, 34% of drivers involved in fatal collisions who were alcohol impaired, 34 % of drivers involved in fatal collisions who were not distracted, 92% of drivers involved who has been involved in any previous accidents, There are 79, 0.3 were car insurance premiums and  144.5 losses incurred by insurance companies for collisions per insured driver. 
+The state of Montana has 21.4 number of drivers involved in fatal collisions per billion miles, 39% of drivers involved in fatal collisions who were speeding, 44% of drivers involved in fatal collisions who were alcohol impaired, 84% of drivers involved in fatal collisions who were not distracted,  85% of drivers involved who has been involved in any previous accidents, there are 
+81, 6.2,1  car insurance premiums and 85.15 losses incurred by insurance companies for collisions per insured driver.
+The State of North Carolina has 16.8 number of drivers involved in fatal collisions per billion miles, 39% of drivers involved in fatal collisions who were speeding, 31% of drivers involved in fatal collisions who were alcohol impaired, 94% of drivers involved in fatal collisions who were not distracted, 81% of drivers involved who has been involved in any previous accidents, there are 70, 8.2, 4 car insurance premiums and 127.82 losses incurred by insurance companies for collisions per insured driver.
+The State of Pennsylvania has 18.2 number of drivers involved in fatal collisions per billion miles, 50% of drivers involved in fatal collisions who were speeding, 31% of drivers involved in fatal collisions who were alcohol impaired, 96% of drivers involved in fatal collisions who were not distracted, 88% of drivers involved who has been involved in any previous accidents, there are 90,5.9, 9 car insurance premiums and 153.86  losses incurred by insurance companies for collisions per insured driver. 
+The State of South Carolina has 23.9 number of drivers involved in fatal collisions per billion miles, 38% of drivers involved in fatal collisions who were speeding, 41% of drivers involved in fatal collisions who were alcohol impaired, 96% of drivers involved who were not distracted,
+81% of drivers who has been involved in any previous accidents, there are 85 ,8.9 car insurance premiums and 116.29 losses incurred by insurance companies for collisions per insured driver.
+The state of South Dakota has 19.4 number of drivers involved in fatal collisions per billion miles, 31% of drivers involved in fatal collisions who were speeding, 33% of drivers involved in fatal collisions who were alcohol impaired,98% of drivers involved in fatal collisions who were not distracted , 86% of drivers involved in fatal collisions who had not been in any previous accidents,  there are 66, 9.3, 1  car insurances premiums and 96.87 losses incurred by insurance companies for collision per insured driver. 
+The state of Texas has 19.4 number of drivers involved in fatal collisions per billion miles, 40% of drivers involved in fatal collisions who were speeding, 38% of drivers involved in fatal collisions who were alcohol impaired, 91% of drivers involved in fatal collisions who were not distracted, 87% of drivers involved in fatal collisions who had not been in any previous accidents, there are 10,04,75 car insurances premiums and 156.83 losses incurred by insurance companies for collision per insured driver. 
+The state of Wyoming has 17.4 number of drivers involved in fatal collisions per billion miles, 42% of drivers involved in fatal collisions who were speeding, 32% of drivers involved in fatal collisions who were alcohol impaired, 81% of drivers involved in fatal collisions who were not distracted, 90% of drivers involved in fatal collisions who had not been in any previous accidents, there are 79,1.1,4 car insurances premiums and 122.04 losses incurred by insurance companies for collision per insured driver. 
+
+```{r,include=FALSE}
+bad_drivers2<-cleandata%>% filter(number_of_drivers_involved_in_fatal_collisions_per_billion_miles > 15 , percentage_of_drivers_involved_in_fatal_collisions_who_were_speeding > 30 , percentage_of_drivers_involved_in_fatal_collisions_who_were_alcohol_impaired >30 , percentage_of_drivers_involved_in_fatal_collisions_who_had_not_been_involved_in_any_previous_accidents>40)
+```
+
+summary:
+```{r, echo=FALSE}
+summarydata<-summary(bad_drivers2)
+summarydata
+```
